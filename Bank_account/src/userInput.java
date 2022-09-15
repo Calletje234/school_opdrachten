@@ -21,6 +21,8 @@ public class userInput {
         System.out.println(" - Login                    li");
         System.out.println(" - Logout                   lo ");
         System.out.println(" - Do a Transaction         t");
+        System.out.println(" - Show Withdraws           w");
+        System.out.println(" - Show Added Amounts       a");
         System.out.println(" - Display Balance          b");
         System.out.println(" - Change Password          cp");
         System.out.println(" - Change Name              cn");
@@ -44,6 +46,16 @@ public class userInput {
                 System.out.println("Please Enter amount for transfer");
                 double amount = scanner.nextDouble();
                 this.bank.TransAction(amount, this.account);
+                break;
+            case "w":
+                for(double item : this.bank.taken_amount()) {
+                    System.out.printf("Withdraw Amount: %s\n", item);
+                }
+                break;
+            case "a":
+                for(double item : this.bank.added_amount()) {
+                    System.out.printf("Added Amount: %s\n", item);
+                }
                 break;
             case "b":
                 this.bank.DisplayCurrentAmount(this.account);

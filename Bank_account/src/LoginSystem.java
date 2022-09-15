@@ -14,10 +14,6 @@ public class LoginSystem {
     }
 
     public void login(String name, String password) {
-        System.out.printf("Username: %s\n", this.name);
-        System.out.printf("Password: %s\n", this.password);
-        System.out.printf("Given USER: %s\n", name);
-        System.out.printf("Given PASS: %s\n", password);
         if(Objects.equals(name, this.name) && Objects.equals(password, this.password)){
             this.loginState = true;
             System.out.println("Your now logged in.");
