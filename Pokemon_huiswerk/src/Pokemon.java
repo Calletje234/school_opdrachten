@@ -9,6 +9,7 @@ public abstract class Pokemon {
     private final String name;
     private String food;
     private String sound;
+    Random rand = new Random();
 
     public Pokemon(String name, String food, String sound) {
         this.name = name;
@@ -16,18 +17,31 @@ public abstract class Pokemon {
         this.sound = sound;
     }
 
-    public void healPokemon(int healAmount) {
-        level += healAmount;
-        System.out.printf("%s has healed for %s", name, healAmount);
-        displayHP();
-    }
-
+    //Getters en Setters
     public void setLevel(int level) {
         this.level = level;
     }
 
     public void setHP(int hp) {
         this.hp = hp;
+    }
+
+    public int getHp() {
+        return this.hp;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public int getDefense() {return this.defense;}
+
+
+    // Pokemon methods.
+    public void healPokemon(int healAmount) {
+        level += healAmount;
+        System.out.printf("%s has healed for %s", name, healAmount);
+        displayHP();
     }
 
     public void addDefense(int defenseAmount) {
@@ -44,18 +58,7 @@ public abstract class Pokemon {
         System.out.printf("You're total defense is now %s", getDefense());
     }
 
-    public int getHp() {
-        return this.hp;
-    }
-
-    public int getLevel() {
-        return this.level;
-    }
-
-    public int getDefense() {return this.defense;}
-
     public void harden() {
-        Random rand = new Random();
         int randomChoice = rand.nextInt(5);
         switch (randomChoice) {
             case 0:
@@ -74,6 +77,24 @@ public abstract class Pokemon {
                     addDefense(15);
                 }
         }
+        pp -= 5;
+    }
+
+    public int tackle() {
+        int randomAttack = rand.nextInt(5);
+        if(randomAttack == 5) {
+            System.out.println("You missed!");
+            pp -= 35;
+            return 0;
+        } else {
+            if (level < 5) {
+                pp -= 20;
+                return 15;
+            } else {
+                pp -= 35;
+                return 30;
+            }
+        }
     }
 
     public void setLowerHealth(int hpLost) {
@@ -87,5 +108,4 @@ public abstract class Pokemon {
     }
 
     public abstract void takeDamage(int damageTake, String attackerType);
-    public abstract void tackle();
 }

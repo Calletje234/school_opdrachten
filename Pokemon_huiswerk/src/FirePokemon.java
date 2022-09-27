@@ -18,7 +18,9 @@ public abstract class FirePokemon extends Pokemon {
         this.setLowerHealth(newDamage);
     }
 
-
+    public int fireBreath(){
+        return 5;
+    }
 }
 
 
