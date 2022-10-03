@@ -13,5 +13,9 @@ public class Player {
         Pokemon Pikachu = new ElectricPokemon("Pikachu", "raspberry", "Pika pika");
         Pokemon Bulbasaur = new GrassPokemon("Bulbasaur", "leafes", "Bulbasaur");
         Pokemon Blastoise = new Waterpokemon("Blastoise", "fish", "Blastoise");
+        pokemon.add(CharLizard);
+        pokemon.add(Pikachu);
+        pokemon.add(Bulbasaur);
+        pokemon.add(Blastoise);
     }
 }
