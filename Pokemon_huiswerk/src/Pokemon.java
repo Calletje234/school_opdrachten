@@ -37,6 +37,8 @@ public abstract class Pokemon {
         return this.level;
     }
 
+    public String getName() {return this.name;}
+
     public int getDefense() {return this.defense;}
 
 
