@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -6,15 +7,17 @@ public abstract class Pokemon {
     private int hp;
     private int pp = 100;
     private int defense = 0;
-    private final String name;
-    private String food;
-    private String sound;
+    private String name;
+    private final String type;
+    private final String food;
+    private final String sound;
     Random rand = new Random();
 
-    public Pokemon(String name, String food, String sound) {
+    public Pokemon(String name, String food, String sound, String type) {
         this.name = name;
         this.food = food;
         this.sound = sound;
+        this.type = type;
     }
 
     //Getters en Setters
@@ -39,9 +42,20 @@ public abstract class Pokemon {
 
     // Pokemon methods.
     public void healPokemon(int healAmount) {
-        level += healAmount;
+        hp += healAmount;
         System.out.printf("%s has healed for %s", name, healAmount);
         displayHP();
+    }
+
+    public void eat(String foodType) {
+        int standarFoodPoint = 25;
+        if(Objects.equals(foodType, this.food)) {
+            healPokemon(standarFoodPoint);
+        } else {
+            int calculatedFoodPoints = standarFoodPoint - 10;
+            System.out.printf("%s Doesn't like %s It only restored %s HP", this.name, foodType, calculatedFoodPoints);
+            healPokemon(calculatedFoodPoints);
+        }
     }
 
     public void addDefense(int defenseAmount) {
@@ -82,7 +96,7 @@ public abstract class Pokemon {
 
     public int tackle() {
         int randomAttack = rand.nextInt(5);
-        if(randomAttack == 5) {
+        if(randomAttack == 4) {
             System.out.println("You missed!");
             pp -= 35;
             return 0;

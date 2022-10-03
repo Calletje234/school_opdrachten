@@ -1,10 +1,18 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
-public abstract class FirePokemon extends Pokemon {
-    private final String type = "Fire";
+public class FirePokemon extends Pokemon {
+    private final List<String> attacks = List.of("tackle",
+            "fireLash",
+            "flameThrower",
+            "pyroBall",
+            "inferno"
+    );
 
     public FirePokemon(String name, String food, String sound) {
-        super(name, food, sound);
+        super(name, food, sound, "Fire");
     }
 
     @Override
@@ -18,8 +26,8 @@ public abstract class FirePokemon extends Pokemon {
         this.setLowerHealth(newDamage);
     }
 
-    public int fireBreath(){
-        return 5;
+    public List<String> getAttacks() {
+        return attacks;
     }
 }
 

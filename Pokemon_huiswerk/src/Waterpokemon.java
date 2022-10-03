@@ -1,9 +1,15 @@
+import java.util.List;
 import java.util.Objects;
 
-public abstract class Waterpokemon extends Pokemon {
-    private String type = "Water";
+public class Waterpokemon extends Pokemon {
+    private final List<String> attacks = List.of("tackle",
+            "surf",
+            "hydroPump",
+            "hydroCanon",
+            "rainDance"
+    );
     public Waterpokemon(String name, String food, String sound) {
-        super(name, food, sound);
+        super(name, food, sound, "Water");
     }
 
     @Override
@@ -15,5 +21,9 @@ public abstract class Waterpokemon extends Pokemon {
                 newDamage = damageTaken;
             }
             this.setLowerHealth(newDamage);
+    }
+
+    public List<String> getAttacks() {
+        return attacks;
     }
 }

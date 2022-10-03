@@ -1,8 +1,15 @@
 import java.util.Objects;
+import java.util.List;
 
-public abstract class ElectricPokemon extends Pokemon {
+public class ElectricPokemon extends Pokemon {
+    private final List<String> attacks = List.of("tackle",
+            "thunderPunch",
+            "electroBall",
+            "thunder",
+            "voltTackle"
+    );
     public ElectricPokemon(String name, String food, String sound) {
-        super(name, food, sound);
+        super(name, food, sound, "Electric");
     }
 
     @Override
@@ -14,5 +21,9 @@ public abstract class ElectricPokemon extends Pokemon {
             newDamage = damageTake;
         }
         this.setLowerHealth(newDamage);
+    }
+
+    public List<String> getAttacks() {
+        return attacks;
     }
 }
